@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AQUADECIDE AI — Interactive Prototype</title>
+<style>
+:root{--navy:#05244d;--blue:#1265c9;--cyan:#12b8d2;--teal:#0ba99b;--bg:#eef7fb;--text:#10284b;--muted:#6c7e97;--line:#d9e8f1;--good:#169b72;--warn:#d99a18}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:linear-gradient(135deg,#f8fcff,#eaf6fb);color:var(--text)}
+.app{min-height:100vh;display:grid;grid-template-columns:1fr 250px}.side{background:linear-gradient(180deg,#05244d,#073b73);color:#fff;padding:18px 14px;position:sticky;top:0;height:100vh}.brand{text-align:center}.logo{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;margin:auto;background:linear-gradient(135deg,#20c9d6,#0b5db2);font-size:24px;font-weight:800}.brand h1{margin:8px 0 2px;font-size:21px}.brand small{opacity:.85}.badge{display:inline-block;margin-top:8px;padding:5px 8px;border:1px solid #ffffff33;border-radius:999px;font-size:10px}
+.nav{margin-top:18px;display:grid;gap:7px}.nav button{border:0;background:transparent;color:#eef8ff;text-align:right;padding:11px 12px;border-radius:10px;cursor:pointer;font-size:13px}.nav button.active,.nav button:hover{background:linear-gradient(90deg,#0d8db7,#11bdc5);font-weight:700}
+.main{min-width:0}.top{height:60px;background:#fffffff2;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:3}.chip{background:#eef7fb;border:1px solid var(--line);padding:6px 9px;border-radius:999px;font-size:10px}.hero{margin:16px 20px;background:linear-gradient(100deg,#0b4b8d,#1a8fbc 50%,#e4f5fb);border-radius:18px;padding:25px 28px;min-height:130px}.hero h2{margin:0;color:#07366f;font-size:30px}.hero p{color:#124f83;font-weight:700}.hero .flow{direction:ltr;color:#fff;font-size:12px;margin-top:12px}.content{padding:0 20px 28px}.page{display:none}.page.active{display:block}
+.grid{display:grid;gap:13px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:1.2fr 1fr}.card{background:#fff;border:1px solid #dbe8f0;border-radius:15px;padding:15px;box-shadow:0 10px 26px #072b5612}.kpi strong{display:block;font-size:24px;color:#0c4f94}.kpi small,.muted{color:var(--muted)}h3{margin:0 0 12px}.pill{display:inline-block;padding:4px 8px;border-radius:999px;font-size:10px}.good{background:#e7f8f1;color:#10815e}.warn{background:#fff4d9;color:#9a6b08}.blue{background:#e9f3ff;color:#1d67b7}
+table{width:100%;border-collapse:collapse}th,td{padding:10px 8px;border-bottom:1px solid #e6eef4;text-align:right;font-size:11px}th{background:#f5faff}.btn{border:0;border-radius:9px;padding:8px 11px;cursor:pointer;font-weight:700}.primary{background:#1265c9;color:#fff}.teal{background:#0ba99b;color:#fff}.ghost{background:#f3f8fb;color:#123f6d;border:1px solid #d9e8f1}.danger{background:#fff0f0;color:#a83838}
+.source{border:1px solid #dce9f1;border-radius:13px;padding:13px}.source.best{border:2px solid #14b39d;background:#f5fffc}.score{font-size:27px;font-weight:800;color:#0a3c78}.row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed #e3edf3}.notice{padding:11px;border-radius:10px;background:#eff8fc;border:1px solid #d8e8f1;font-size:11px;line-height:1.7}.alloc{display:flex;align-items:center;gap:9px;margin:9px 0}.bar{height:8px;background:#e6eef3;border-radius:99px;flex:1;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,#1265c9,#12b8d2)}input[type=range]{width:100%;accent-color:#1265c9}.review-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.audit{border-right:3px solid #dbe8ef;padding-right:15px}.audit div{padding:8px 0}.audit b{display:block}
+@media(max-width:900px){.app{grid-template-columns:1fr}.side{position:relative;height:auto}.nav{grid-template-columns:repeat(2,1fr)}.g4,.g3,.g2{grid-template-columns:1fr}.hero h2{font-size:23px}}
+</style>
+</head>
+<body>
+<div class="app">
+<main class="main">
+<div class="top"><span class="chip">Prototype v0.2.1</span><span class="chip">Working Prototype • Human-in-the-loop</span></div>
+<div class="hero"><h2 id="heroTitle">لوحة AQUADECIDE للطلبات</h2><p id="heroSub">تحويل بيانات الطلب إلى توصية تحليلية مفسرة قابلة للمراجعة</p><div class="flow">Data → AI Forecast → Eligibility → Optimization → Explainable Recommendation → Human Review</div></div>
+<div class="content">
+<section id="dashboard" class="page active"></section>
+<section id="requests" class="page"></section>
+<section id="analysis" class="page"></section>
+<section id="scenario" class="page"></section>
+<section id="review" class="page"></section>
+<section id="evidence" class="page"></section>
+</div>
+</main>
+<aside class="side">
+<div class="brand"><div class="logo">AQ</div><h1>AQUADECIDE AI</h1><small>Water Demand & Allocation Intelligence</small><div class="badge">Interactive Working Prototype</div></div>
+<div class="nav">
+<button class="active" data-p="dashboard">⌂ الصفحة الرئيسية</button>
+<button data-p="requests">▤ الطلبات</button>
+<button data-p="analysis">⌁ تحليل AQUADECIDE</button>
+<button data-p="scenario">⇄ مختبر السيناريو</button>
+<button data-p="review">✓ المراجعة البشرية</button>
+<button data-p="evidence">▥ مختبر الدليل</button>
+</div>
+</aside>
+</div>
+<script>
+var demand=5000, demandPct=100, capDrop=0, decision="";
+var reqs=[
+["WR-DEMO-0428","مصنع بتروكيماويات تجريبي","تبريد صناعي","الدمام","5,000","قيد المراجعة"],
+["WR-DEMO-0427","مزرعة تجريبية","ري","الخرج","4,200","جديد"],
+["WR-DEMO-0426","مشروع حضري تجريبي","تنسيق حضري غير شربي","الرياض","6,800","قيد المراجعة"]
+];
+var titles={
+dashboard:["لوحة AQUADECIDE للطلبات","تحويل بيانات الطلب إلى توصية تحليلية مفسرة قابلة للمراجعة"],
+requests:["طلبات المياه","رحلة رقمية من الطلب إلى التوصية"],
+analysis:["تحليل AQUADECIDE","قيود الأهلية أولاً، ثم مقارنة البدائل القابلة للتنفيذ"],
+scenario:["مختبر السيناريو","اختبار تغير الطلب وسعات المصادر"],
+review:["المراجعة البشرية","القرار النهائي يبقى لدى صاحب الصلاحية"],
+evidence:["مختبر الدليل","الأداء الكمي وخطة التحقق التالية"]
+};
+function go(p){
+document.querySelectorAll(".page").forEach(function(x){x.classList.remove("active")});
+document.getElementById(p).classList.add("active");
+document.querySelectorAll(".nav button").forEach(function(b){b.classList.toggle("active",b.dataset.p===p)});
+document.getElementById("heroTitle").textContent=titles[p][0];
+document.getElementById("heroSub").textContent=titles[p][1];
+window.scrollTo(0,0)
+}
+document.querySelectorAll(".nav button").forEach(function(b){b.onclick=function(){go(b.dataset.p)}});
+function requestTable(){
+return '<div class="card"><h3>طلبات تجريبية</h3><table><thead><tr><th>رقم الطلب</th><th>الجهة</th><th>الاستخدام</th><th>المدينة</th><th>الكمية م³/يوم</th><th>الحالة</th></tr></thead><tbody>'+
+reqs.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td><td><span class="pill blue">'+r[5]+'</span></td></tr>'}).join("")+
+'</tbody></table></div>'
+}
+function renderDashboard(){
+document.getElementById("dashboard").innerHTML=
+'<div class="grid g4"><div class="card kpi"><small>طلبات تجريبية</small><strong>3</strong></div><div class="card kpi"><small>مصادر متاحة</small><strong>3</strong></div><div class="card kpi"><small>نسبة الاستبدال المحسوبة</small><strong>86.0%</strong></div><div class="card kpi"><small>خفض الكلفة المحسوب</small><strong>11.7%</strong></div></div>'+
+'<div class="grid g2" style="margin-top:13px">'+requestTable()+
+'<div class="card"><h3>كيف يعمل</h3><div class="row"><span>1. AI demand forecast</span><b>✓</b></div><div class="row"><span>2. Hard-constraint screening</span><b>✓</b></div><div class="row"><span>3. Multi-source allocation</span><b>✓</b></div><div class="row"><span>4. Explainable recommendation</span><b>✓</b></div><div class="row"><span>5. Human review</span><b>✓</b></div><p class="muted">صمم كطبقة قرار فوق الأنظمة القائمة، وليس بديلاً عن SCADA أو GIS أو أنظمة المختبر.</p></div></div>'
+}
+function renderRequests(){document.getElementById("requests").innerHTML=requestTable()+'<div class="notice" style="margin-top:13px">هذه الحالات تعرض رحلة العمل المستهدفة: طلب → بيانات الطلب والجودة → تقييم الأهلية → تخصيص المصادر → التوصية → المراجعة البشرية.</div>'}
+function renderAnalysis(){
+document.getElementById("analysis").innerHTML=
+'<div class="notice"><b>Eligibility first:</b> الجودة والسعة وإمكانية الخدمة تعامل كقيود صلبة قبل المفاضلة الاقتصادية.</div>'+
+'<div class="grid g3" style="margin-top:13px">'+
+'<div class="source best"><span class="pill good">مؤهل • Rank 1</span><h3>المصدر أ — مياه مجددة ثلاثية</h3><div class="score">92/100</div><div class="row"><span>السعة</span><b>6,200 م³/يوم</b></div><div class="row"><span>الجودة</span><b>PASS</b></div><div class="row"><span>إمكانية الخدمة</span><b>PASS</b></div></div>'+
+'<div class="source"><span class="pill good">مؤهل • Rank 2</span><h3>المصدر ب — مياه مجددة ثانوية</h3><div class="score">84/100</div><div class="row"><span>السعة</span><b>5,200 م³/يوم</b></div><div class="row"><span>الجودة</span><b>PASS</b></div><div class="row"><span>إمكانية الخدمة</span><b>PASS</b></div></div>'+
+'<div class="source"><span class="pill warn">غير مؤهل</span><h3>المصدر ج — مصدر بديل</h3><div class="score">59/100</div><div class="row"><span>السعة</span><b>4,200 م³/يوم</b></div><div class="row"><span>الجودة</span><b>FAIL</b></div><div class="row"><span>إمكانية الخدمة</span><b>PASS</b></div></div></div>'+
+'<div class="card" style="margin-top:13px"><h3>التوصية المفسرة</h3><div class="alloc"><b>المصدر أ</b><div class="bar"><span style="width:100%"></span></div><b>5,000 م³/يوم</b></div><p>السبب: اجتاز القيود الصلبة وحقق أعلى ترتيب تحليلي بين البدائل المؤهلة. البدائل غير المختارة تبقى ظاهرة للمراجع.</p><button class="btn teal" onclick="go(\'scenario\')">اختبر سيناريو</button></div>'
+}
+function renderScenario(){
+var d=Math.round(demand*demandPct/100);
+var cap=Math.round(6200*(1-capDrop/100));
+var supplied=Math.min(d,cap+5200), gap=Math.max(0,d-supplied);
+document.getElementById("scenario").innerHTML=
+'<div class="grid g2"><div class="card"><h3>إعدادات What-if</h3><label>الطلب: <b>'+demandPct+'%</b></label><input id="dr" type="range" min="80" max="130" step="5" value="'+demandPct+'"><br><br><label>خفض سعة المصدر الأول: <b>'+capDrop+'%</b></label><input id="cr" type="range" min="0" max="60" step="10" value="'+capDrop+'"><div class="notice" style="margin-top:14px">أي تغيير يعيد حساب التخصيص فوراً ولا يرسل أوامر إلى نظام تشغيلي.</div></div>'+
+'<div class="card"><h3>نتيجة السيناريو</h3><div class="row"><span>الطلب</span><b>'+d.toLocaleString()+' م³/يوم</b></div><div class="row"><span>سعة المصدر أ</span><b>'+cap.toLocaleString()+' م³/يوم</b></div><div class="row"><span>إجمالي التغطية</span><b>'+supplied.toLocaleString()+' م³/يوم</b></div><div class="row"><span>الفجوة</span><b>'+gap.toLocaleString()+' م³/يوم</b></div><span class="pill '+(gap===0?"good":"warn")+'">'+(gap===0?"Feasible allocation":"Gap remains")+'</span><br><br><button class="btn teal" onclick="go(\'review\')">إرسال للمراجعة البشرية</button></div></div>';
+document.getElementById("dr").oninput=function(){demandPct=+this.value;renderScenario()};
+document.getElementById("cr").oninput=function(){capDrop=+this.value;renderScenario()}
+}
+function choose(x){decision=x;renderReview()}
+function renderReview(){
+document.getElementById("review").innerHTML=
+'<div class="grid g2"><div class="card"><h3>Human-in-the-loop</h3><div class="notice"><b>AQUADECIDE recommendation:</b> تخصيص المصدر أ أولاً ثم المصدر ب عند الحاجة، مع إبقاء القرار النهائي للمراجع.</div><div class="review-actions" style="margin-top:13px"><button class="btn teal" onclick="choose(\'اعتماد التوصية\')">اعتماد</button><button class="btn ghost" onclick="choose(\'اعتماد مع تعديل\')">تعديل</button><button class="btn danger" onclick="choose(\'رفض/إرجاع\')">رفض</button></div><p><b>القرار التجريبي:</b> '+(decision||"بانتظار المراجع")+'</p></div>'+
+'<div class="card"><h3>Audit Trail</h3><div class="audit"><div><b>استلام الحالة</b><span class="muted">Request and quality inputs</span></div><div><b>فحص الأهلية</b><span class="muted">Quality + capacity + serviceability</span></div><div><b>التحسين والتخصيص</b><span class="muted">Ranked feasible sources and volumes</span></div><div><b>التوصية</b><span class="muted">Reasons and alternatives preserved</span></div><div><b>قرار المستخدم</b><span class="muted">'+(decision||"Pending")+'</span></div></div></div></div>'
+}
+function renderEvidence(){
+document.getElementById("evidence").innerHTML=
+'<div class="grid g4"><div class="card kpi"><small>Forecast demand</small><strong>15,590</strong><small>m³/day</small></div><div class="card kpi"><small>Alternative capacity</small><strong>13,400</strong><small>m³/day</small></div><div class="card kpi"><small>Freshwater substitution</small><strong>86.0%</strong></div><div class="card kpi"><small>Mean MAPE</small><strong>2.84%</strong></div></div>'+
+'<div class="grid g2" style="margin-top:13px"><div class="card"><h3>Controlled stress test</h3><div class="row"><span>Demand change</span><b>+12%</b></div><div class="row"><span>One source capacity</span><b>-40%</b></div><div class="row"><span>Modeled cost reduction</span><b>9.5%</b></div><div class="row"><span>Result</span><b>Feasible dynamic reallocation</b></div></div>'+
+'<div class="card"><h3>Next validation stage</h3><div class="row"><span>1</span><b>Representative institutional data</b></div><div class="row"><span>2</span><b>Historical replay & calibration</b></div><div class="row"><span>3</span><b>Expert/user review</b></div><div class="row"><span>4</span><b>Controlled / shadow-mode validation</b></div></div></div>'+
+'<div class="notice" style="margin-top:13px">The solution has been informed by stakeholder interviews with water-sector professionals and by an existing Saudi digital water-request workflow. The next step is institutional-data validation and controlled operational testing.</div>'
+}
+renderDashboard();renderRequests();renderAnalysis();renderScenario();renderReview();renderEvidence();
+</script>
+</body>
+</html>

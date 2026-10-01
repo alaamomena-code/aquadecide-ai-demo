@@ -1,3 +1,5 @@
 # AquaDecide AI Demo
 
 Interactive static prototype for the Future Makers application.
+
+GitHub Pages deployment enabled.

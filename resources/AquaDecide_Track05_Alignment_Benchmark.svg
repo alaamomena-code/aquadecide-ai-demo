@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+  <linearGradient id="hdr" x1="0" x2="1"><stop offset="0" stop-color="#082d52"/><stop offset="1" stop-color="#0d6f86"/></linearGradient>
+  <linearGradient id="mint" x1="0" x2="1"><stop offset="0" stop-color="#e8f8f5"/><stop offset="1" stop-color="#f6fbfc"/></linearGradient>
+  <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity=".10"/></filter>
+  <style>
+    .title{font:700 34px Arial,sans-serif;fill:#fff}.sub{font:600 17px Arial,sans-serif;fill:#d6f4f3}
+    .h2{font:700 21px Arial,sans-serif;fill:#0b3658}.h3{font:700 15px Arial,sans-serif;fill:#0b3658}
+    .body{font:14px Arial,sans-serif;fill:#36576c}.small{font:12px Arial,sans-serif;fill:#587182}
+    .metric{font:700 27px Arial,sans-serif;fill:#0b6f72}.metric2{font:700 22px Arial,sans-serif;fill:#0b6f72}
+    .white{fill:#fff}.teal{fill:#0a9b98}.green{fill:#2c9a73}.navy{fill:#0b3658}.line{stroke:#cbdfe5;stroke-width:2}
+    .pill{font:700 12px Arial,sans-serif;fill:#0c6669}
+  </style>
+</defs>
+
+<rect width="1600" height="900" fill="#eef6f8"/>
+<rect x="0" y="0" width="1600" height="150" fill="url(#hdr)"/>
+<circle cx="72" cy="72" r="34" fill="#20b7b2"/><text x="72" y="82" text-anchor="middle" class="title" font-size="22">AQ</text>
+<text x="125" y="62" class="title">AquaDecide AI</text>
+<text x="125" y="92" class="sub">Explainable Water-Demand &amp; Allocation Intelligence for Track 05</text>
+<text x="125" y="121" class="sub" font-size="14">Aquifer Governance &amp; Demand Analytics • Treated/Recycled Water Matching • Explainable Allocation</text>
+<rect x="1310" y="48" rx="18" ry="18" width="220" height="48" fill="#d9f4ef"/><text x="1420" y="78" text-anchor="middle" class="pill">TRACK 05 ALIGNMENT</text>
+
+<!-- left -->
+<rect x="45" y="185" rx="18" width="470" height="555" fill="#fff" filter="url(#shadow)"/>
+<text x="75" y="225" class="h2">1. Track 05 Challenge Link</text>
+<text x="75" y="262" class="body">Water-demand decisions depend on more than volume.</text>
+<text x="75" y="286" class="body">Source availability, water quality, capacity, cost and</text>
+<text x="75" y="310" class="body">operational constraints all affect the allocation decision.</text>
+<line x1="75" y1="334" x2="485" y2="334" class="line"/>
+<text x="75" y="372" class="h3">Why AquaDecide fits Track 05</text>
+
+<circle cx="91" cy="408" r="9" fill="#0a9b98"/><text x="115" y="413" class="body">Forecasts near-term water demand</text>
+<circle cx="91" cy="448" r="9" fill="#0a9b98"/><text x="115" y="453" class="body">Screens source quality, capacity &amp; feasibility</text>
+<circle cx="91" cy="488" r="9" fill="#0a9b98"/><text x="115" y="493" class="body">Matches treated/recycled water to eligible uses</text>
+<circle cx="91" cy="528" r="9" fill="#0a9b98"/><text x="115" y="533" class="body">Reduces avoidable groundwater dependence</text>
+<rect x="75" y="570" rx="14" width="410" height="118" fill="url(#mint)"/>
+<text x="95" y="600" class="h3">Direct Track 05 linkage</text>
+<text x="95" y="628" class="body">Better use of treated/recycled water can substitute</text>
+<text x="95" y="651" class="body">groundwater where feasible, while respecting quality,</text>
+<text x="95" y="674" class="body">capacity, cost and abstraction constraints.</text>
+
+<!-- center -->
+<rect x="545" y="185" rx="18" width="500" height="555" fill="#fff" filter="url(#shadow)"/>
+<text x="575" y="225" class="h2">2. How AquaDecide Works</text>
+
+<rect x="600" y="255" rx="14" width="390" height="58" fill="#e8f5f7"/><text x="795" y="279" text-anchor="middle" class="h3">Demand &amp; Use Requirements</text><text x="795" y="301" text-anchor="middle" class="small">Volume • Use • Timing • Location</text>
+<text x="795" y="338" text-anchor="middle" class="metric2">↓</text>
+<rect x="600" y="352" rx="14" width="390" height="68" fill="#e8f5f7"/><text x="795" y="377" text-anchor="middle" class="h3">Available Water Sources</text><text x="795" y="399" text-anchor="middle" class="small">Treated/Recycled • Groundwater • Other</text>
+<text x="795" y="443" text-anchor="middle" class="metric2">↓</text>
+<rect x="600" y="457" rx="14" width="390" height="54" fill="#dff3ee"/><text x="795" y="490" text-anchor="middle" class="h3">AI Demand Forecasting</text>
+<text x="795" y="537" text-anchor="middle" class="metric2">↓</text>
+<rect x="600" y="550" rx="14" width="390" height="64" fill="#dff3ee"/><text x="795" y="576" text-anchor="middle" class="h3">Eligibility &amp; Feasibility Screening</text><text x="795" y="598" text-anchor="middle" class="small">Quality • Capacity • Availability • Constraints</text>
+<text x="795" y="641" text-anchor="middle" class="metric2">↓</text>
+<rect x="600" y="654" rx="14" width="390" height="54" fill="#0d6f86"/><text x="795" y="687" text-anchor="middle" class="white" font-family="Arial" font-size="16" font-weight="700">Explainable Allocation Recommendation</text>
+<text x="795" y="728" text-anchor="middle" class="small">Human decision-maker remains in control</text>
+
+<!-- right -->
+<rect x="1075" y="185" rx="18" width="480" height="555" fill="#fff" filter="url(#shadow)"/>
+<text x="1105" y="225" class="h2">3. Current Controlled Evidence</text>
+
+<rect x="1105" y="250" rx="14" width="200" height="90" fill="#eef8f7"/>
+<text x="1205" y="288" text-anchor="middle" class="metric">2.84%</text><text x="1205" y="315" text-anchor="middle" class="small">Mean MAPE</text>
+<rect x="1325" y="250" rx="14" width="200" height="90" fill="#eef8f7"/>
+<text x="1425" y="288" text-anchor="middle" class="metric">11.7%</text><text x="1425" y="315" text-anchor="middle" class="small">Lower modeled cost</text>
+
+<rect x="1105" y="355" rx="14" width="420" height="88" fill="#f6fafb"/>
+<text x="1128" y="385" class="h3">Stress resilience</text>
+<text x="1128" y="410" class="body">Feasible reallocation under +12% demand</text>
+<text x="1128" y="432" class="body">and −40% capacity from one source</text>
+
+<rect x="1105" y="460" rx="14" width="420" height="70" fill="#f8fbfb"/>
+<text x="1128" y="489" class="metric2">86.0%</text>
+<text x="1205" y="486" class="small">reclaimed/alternative-water utilization</text>
+<text x="1205" y="507" class="small">in the current controlled scenario</text>
+
+<text x="1105" y="567" class="h2">4. Next Track 05 Benchmark</text>
+<text x="1120" y="602" class="body">• Groundwater abstraction volume</text>
+<text x="1120" y="630" class="body">• Treated/recycled-water allocation</text>
+<text x="1120" y="658" class="body">• Abstraction-limit compliance</text>
+<text x="1120" y="686" class="body">• Quality-fit allocation &amp; operating cost</text>
+<text x="1105" y="720" class="small">Controlled evidence ≠ field-performance claim</text>
+
+<!-- impact -->
+<rect x="45" y="770" rx="18" width="1510" height="95" fill="#0b3658"/>
+<text x="75" y="802" class="white" font-family="Arial" font-size="18" font-weight="700">Track 05 Impact Logic</text>
+<text x="75" y="837" class="white" font-family="Arial" font-size="16">Better demand intelligence</text>
+<text x="345" y="837" class="white" font-family="Arial" font-size="22">→</text>
+<text x="390" y="837" class="white" font-family="Arial" font-size="16">Better treated/recycled-water matching</text>
+<text x="760" y="837" class="white" font-family="Arial" font-size="22">→</text>
+<text x="805" y="837" class="white" font-family="Arial" font-size="16">Lower avoidable groundwater dependence</text>
+<text x="1198" y="837" class="white" font-family="Arial" font-size="22">→</text>
+<text x="1240" y="837" class="white" font-family="Arial" font-size="16">Stronger aquifer governance</text>
+</svg>
